@@ -1,8 +1,8 @@
 const bodyParser = require('body-parser');
 const express = require('express');
-const routeHeuristicas = require("../app/routes/heuristicas")
 const routeChecklists = require("../app/routes/checklists")
 const routeCategorias = require("../app/routes/categorias")
+const routeHeuristicas = require("../app/routes/heuristicas")
 
 module.exports = function(){
     let app = express();
