@@ -46,3 +46,14 @@ module.exports.buscarCategoriaPorNome = function (req, res) {
         res.status(500).json({ mensagem: "Sua requisição falhou", error });
     })
 }
+
+module.exports.buscarCategoriaPorId = function (req, res) {
+    let id = req.params.id;
+
+    let promise = Categoria.findById(id);
+    promise.then(function (categorias) {
+        res.status(201).json(view.renderMany(categorias));
+    }).catch(function (error) {
+        res.status(500).json({ mensagem: "Sua requisição falhou", error });
+    })
+}

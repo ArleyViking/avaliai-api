@@ -4,6 +4,7 @@ const routeChecklists = require("../app/routes/checklists")
 const routeCategorias = require("../app/routes/categorias")
 const routeHeuristicas = require("../app/routes/heuristicas")
 
+
 module.exports = function(){
     let app = express();
 

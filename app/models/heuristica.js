@@ -15,11 +15,13 @@ module.exports = function(){
             required: true
         },
         categoria: {
-            type: mongoose.Schema.ObjectId,
+            type: String,
+            required: true,
             ref: 'Categoria'
         },
         checklist: {
-            type: mongoose.Schema.ObjectId,
+            type: String,
+            required: true,
             ref: 'Checklist'
         },
         fonte: {
