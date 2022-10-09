@@ -26,13 +26,19 @@ module.exports.buscarItens = function (req, res) {
 
 module.exports.buscarItensPorheuristica = async function (req, res) {
   let { heuristica } = req.params;
+  let { pagina, tam_pagina } = req.query;
   try {
-    let promise = itemDeVerificacao.find({ heuristica }).populate("heuristica");
+    let promise = itemDeVerificacao.find({ heuristica });
 
-    const itens = await promise;
-    const count = await promise.count();
+    let promise2 = itemDeVerificacao.find({ heuristica });
+
+    const itens = await promise
+      .skip(Number(pagina) * Number(tam_pagina))
+      .limit(Number(tam_pagina))
+      .populate("heuristica");
+    const count = await promise2.count();
     res.status(201).json({ itens, count });
-  } catch {
-    res.status(500).json({ mensagem: "Sua requisição falhou" });
+  } catch (error) {
+    res.status(500).json({ mensagem: "Sua requisição falhou", error });
   }
 };
