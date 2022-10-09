@@ -26,7 +26,7 @@ module.exports.buscarHeuristica = function (req, res) {
 module.exports.buscarHeuristicaPorCategoria = function (req, res) {
     let {categoria} = req.params;
     console.log(categoria);
-    let promise = Heuristica.find({categoria}).populate('categoria');
+    let promise = Heuristica.find({categoria}).populate('categoria').populate('checklist');
     promise.then(function (heuristicas) {
         res.status(201).json(heuristicas);
     }).catch(function (error) {

@@ -26,7 +26,6 @@ module.exports.buscarCategoria = function (req, res) {
 
 module.exports.buscarCategoriaPorChecklist = function (req, res) {
     let { id_check } = req.params;
-
     let promise = Categoria.find({ id_check }).populate('id_check');
     promise.then(function (categorias) {
         res.status(201).json(view.renderMany(categorias));
@@ -48,7 +47,7 @@ module.exports.buscarCategoriaPorNome = function (req, res) {
 }
 
 module.exports.buscarCategoriaPorId = function (req, res) {
-    let id = req.params.id;
+    let {id} = req.params;
 
     let promise = Categoria.findById(id);
     promise.then(function (categorias) {
