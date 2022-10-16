@@ -9,7 +9,7 @@ const cors = require("cors");
 module.exports = function () {
   let app = express();
   app.use(cors());
-  app.set("port", 3000);
+  app.set("port", process.env.PORT || 3000);
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(express.static("./public"));
