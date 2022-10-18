@@ -3,6 +3,7 @@ const express = require("express");
 const routeChecklists = require("../app/routes/checklists");
 const routeCategorias = require("../app/routes/categorias");
 const routeHeuristicas = require("../app/routes/heuristicas");
+const routeContadores = require("../app/routes/contadores");
 const routeItens = require("../app/routes/itensdeverificacao");
 const cors = require("cors");
 
@@ -17,7 +18,7 @@ module.exports = function () {
   routeItens(app);
   routeCategorias(app);
   routeHeuristicas(app);
-
+  routeContadores(app);
   routeChecklists(app);
   return app;
 };
