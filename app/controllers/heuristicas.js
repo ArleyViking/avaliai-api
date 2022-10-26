@@ -36,3 +36,18 @@ module.exports.buscarHeuristicaPorCategoria = function (req, res) {
       res.status(500).json({ mensagem: "Sua requisição falhou" });
     });
 };
+
+module.exports.buscarHeuristicaPorID = function (req, res) {
+  let { _id } = req.params;
+  console.log(_id);
+  let promise = Heuristica.findById({ _id })
+    .populate("categoria")
+    .populate("checklist");
+  promise
+    .then(function (heuristica) {
+      res.status(201).json(heuristica);
+    })
+    .catch(function (error) {
+      res.status(500).json({ mensagem: "Sua requisição falhou" });
+    });
+};
