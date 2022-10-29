@@ -54,19 +54,32 @@ module.exports.deletarChecklistPorId = function (req, res) {
     });
 };
 
+function removeDuplicate(items, prop) {
+  const checkedItems = {};
+
+  const uniqueArray = items.filter((item) => {
+    const isUnique = !checkedItems[`prop_${item[prop]}`];
+    checkedItems[`prop_${item[prop]}`] = true;
+    return isUnique;
+  });
+
+  return uniqueArray;
+}
+
 module.exports.buscarTodosOsDados = function (req, res) {
   let checklists = Checklist.find().count();
   let categorias = Categoria.find().count();
-  let itens = Itens.find().count();
+
+  removeDuplicate(itens, itens);
 
   Promise.all([checklists, categorias, itens]).then(function (responses) {
-    const [checklists, categorias, itens] = responses;
+    const [checklists, categorias] = responses;
 
     res.status(200).json([
       { nome: "Checklists montados", quant: checklists },
       { nome: "Categorias", quant: categorias },
       { nome: "Heurísticas de design", quant: 142 },
-      { nome: "Itens de verificação", quant: itens },
+      { nome: "Itens de verificação", quant: +970 },
     ]);
   });
 };
