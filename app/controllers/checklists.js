@@ -58,7 +58,7 @@ module.exports.buscarTodosOsDados = function (req, res) {
   let checklists = Checklist.find().count();
   let categorias = Categoria.find().count();
 
-  Promise.all([checklists, categorias, itens]).then(function (responses) {
+  Promise.all([checklists, categorias]).then(function (responses) {
     const [checklists, categorias] = responses;
 
     res.status(200).json([
