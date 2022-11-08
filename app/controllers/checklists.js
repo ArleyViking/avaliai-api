@@ -65,7 +65,7 @@ module.exports.buscarTodosOsDados = function (req, res) {
       { nome: "Checklists montados", quant: checklists },
       { nome: "Categorias", quant: categorias },
       { nome: "Heurísticas de design", quant: 142 },
-      { nome: "Itens de verificação", quant: "+970" },
+      { nome: "Itens de verificação", quant: +971 },
     ]);
   });
 };
