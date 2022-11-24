@@ -54,6 +54,8 @@ module.exports.deletarChecklistPorId = function (req, res) {
     });
 };
 
+//buscar dados para o dash
+
 module.exports.buscarTodosOsDados = function (req, res) {
   let checklists = Checklist.find().count();
   let categorias = Categoria.find().count();
